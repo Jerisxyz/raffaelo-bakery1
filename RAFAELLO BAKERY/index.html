@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raffaello Bakery | Café & Panadería Artesanal en Villavicencio</title>
+    <meta name="description" content="Raffaello Bakery: brunch gourmet, viennoiserie artesanal y café de especialidad en Villavicencio. Masa madre natural, fermentación lenta de 48h y una experiencia inspirada en los cafés europeos.">
+    <meta property="og:title" content="Raffaello Bakery | Villavicencio">
+    <meta property="og:description" content="Brunch gourmet, pastelería artesanal y café de especialidad inspirados en Europa.">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#362A24">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: '#FCFBF9', sand: '#F6F4F0', stone2: '#F2EEE9',
+                        espresso: '#362A24', coal: '#251D19', night: '#1F1815', ink: '#1A1412',
+                        taupe: '#7A726E', gold: '#C7A672', golddark: '#B38F56', mist: '#DCD6D0'
+                    },
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="imgs/logo.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<base target="_blank">
+</head>
+<body class="relative min-h-screen overflow-x-hidden bg-cream text-espresso selection:bg-stone2 selection:text-espresso">
+
+    <!-- Ambient Backgrounds -->
+    <div class="fixed inset-0 ambient-glow pointer-events-none z-0"></div>
+    <div class="fixed inset-0 ambient-shadow pointer-events-none z-0"></div>
+
+    <!-- Navigation -->
+    <nav class="absolute top-0 left-0 w-full z-50 px-6 lg:px-16 py-8 flex justify-between items-center animate-fade-up">
+        <!-- Logo -->
+        <a href="#inicio" class="flex items-center gap-3" aria-label="Raffaello Bakery - Inicio">
+            <img src="imgs/logo.jpg" alt="Logo Raffaello Bakery" class="w-11 h-11 rounded-full object-cover ring-1 ring-gold/40">
+            <span class="text-sm font-medium tracking-[0.2em] uppercase text-espresso">Raffaello</span>
+        </a>
+
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex gap-10 items-center">
+            <a href="#seleccion" class="text-xs font-medium text-taupe hover:text-espresso transition-colors duration-300">Nuestra Carta</a>
+            <a href="#historia" class="text-xs font-medium text-taupe hover:text-espresso transition-colors duration-300">La Panadería</a>
+            <a href="#experiencia" class="text-xs font-medium text-taupe hover:text-espresso transition-colors duration-300">Historia</a>
+            <a href="#visitanos" class="hidden lg:inline-flex px-6 py-2.5 bg-espresso text-cream text-xs font-medium rounded-full hover:bg-coal transition-colors duration-300 shadow-md shadow-espresso/15">Reservar</a>
+            <button id="menuBtn" aria-label="Abrir menú" aria-expanded="false" class="w-10 h-10 rounded-full border border-stone2 flex items-center justify-center hover:bg-espresso hover:text-white hover:border-espresso transition-all duration-300 text-espresso">
+                <iconify-icon icon="solar:hamburger-menu-linear" width="18"></iconify-icon>
+            </button>
+        </div>
+
+        <!-- Mobile menu button -->
+        <button id="mobileBtn" aria-label="Abrir menú" aria-expanded="false" class="md:hidden w-10 h-10 rounded-full border border-stone2 flex items-center justify-center text-espresso">
+            <iconify-icon icon="solar:hamburger-menu-linear" width="18"></iconify-icon>
+        </button>
+    </nav>
+
+    <!-- Mobile overlay menu -->
+    <div id="mobileMenu" class="fixed inset-0 z-[60] bg-espresso/95 backdrop-blur-xl hidden flex-col items-center justify-center gap-8 text-cream">
+        <button id="mobileClose" aria-label="Cerrar menú" class="absolute top-8 right-6 w-11 h-11 rounded-full border border-cream/20 flex items-center justify-center hover:bg-cream/10 transition-colors">
+            <iconify-icon icon="solar:close-linear" width="20"></iconify-icon>
+        </button>
+        <a href="#seleccion" class="mobile-link font-serif text-4xl hover:text-gold transition-colors">Nuestra Carta</a>
+        <a href="#historia" class="mobile-link font-serif text-4xl hover:text-gold transition-colors">La Panadería</a>
+        <a href="#experiencia" class="mobile-link font-serif text-4xl hover:text-gold transition-colors">Historia</a>
+        <a href="#visitanos" class="mobile-link mt-4 px-8 py-3.5 bg-gold text-night text-xs font-medium rounded-full tracking-widest uppercase">Reservar Mesa</a>
+    </div>
+
+    <!-- Hero -->
+    <main id="inicio" class="relative z-10 min-h-screen w-full flex flex-col lg:flex-row pt-28 lg:pt-0">
+
+        <!-- Left Content -->
+        <div class="w-full lg:w-5/12 flex flex-col justify-center px-6 lg:px-16 xl:px-24 pb-16 lg:pb-0">
+            <div class="max-w-lg">
+                <div class="flex items-center gap-4 animate-fade-up delay-100 mb-8">
+                    <span class="w-8 h-px bg-gold"></span>
+                    <span class="text-[0.65rem] uppercase tracking-widest font-medium text-gold">Villavicencio, Colombia</span>
+                </div>
+
+                <h1 class="text-5xl md:text-6xl lg:text-7xl font-serif font-normal leading-[1.05] tracking-tight text-espresso animate-fade-up delay-200 mb-6">
+                    Una experiencia<br class="hidden sm:block">
+                    de café y pastelería<br class="hidden sm:block">
+                    inspirada en Europa.
+                </h1>
+
+                <p class="text-base text-taupe font-light leading-relaxed animate-fade-up delay-300 mb-10 max-w-md pr-4">
+                    Arte, tradición y los mejores ingredientes en cada bocado. Descubre
+                    nuestro brunch gourmet y panadería artesanal en un ambiente cálido y
+                    sofisticado.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-4 animate-fade-up delay-400">
+                    <a href="#menu" class="group relative px-8 py-3.5 bg-espresso text-white text-xs font-medium rounded-full overflow-hidden flex items-center justify-center gap-3 transition-transform duration-300 hover:-translate-y-0.5 shadow-lg shadow-espresso/20">
+                        <span class="relative z-10">Explorar Menú</span>
+                        <iconify-icon icon="solar:arrow-right-linear" width="16" class="relative z-10 group-hover:translate-x-1 transition-transform duration-300"></iconify-icon>
+                        <div class="absolute inset-0 bg-coal translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out z-0"></div>
+                    </a>
+                    <a href="#visitanos" class="px-8 py-3.5 border border-mist text-espresso text-xs font-medium rounded-full flex items-center justify-center hover:bg-stone2 transition-all duration-300 hover:-translate-y-0.5">
+                        Reservar Mesa
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Visual -->
+        <div class="w-full lg:w-7/12 relative min-h-[50vh] lg:min-h-screen flex items-center justify-center p-6 lg:p-12 xl:p-20">
+            <div class="relative w-full h-full max-w-2xl max-h-[80vh] flex items-center justify-center">
+                <div class="relative w-full aspect-[4/5] lg:aspect-[3/4] rounded-[2rem] overflow-hidden shadow-premium animate-reveal delay-300">
+                    <img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?q=80&w=2000&auto=format&fit=crop"
+                         alt="Café de especialidad y croissant de Raffaello Bakery"
+                         class="w-full h-full object-cover object-center scale-105 hover:scale-100 transition-transform duration-[2s] ease-out"
+                         fetchpriority="high" decoding="async">
+                    <div class="absolute inset-0 rounded-[2rem] border border-white/20 pointer-events-none mix-blend-overlay"></div>
+                </div>
+
+                <div class="absolute -bottom-8 -left-4 md:-bottom-12 md:-left-12 w-40 h-52 md:w-56 md:h-72 rounded-[1.5rem] p-2 bg-white/40 backdrop-blur-md shadow-premium animate-float-slow delay-500 hidden sm:block">
+                    <div class="w-full h-full rounded-[1rem] overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1608198093002-ad4e005484ec?q=80&w=1000&auto=format&fit=crop"
+                             alt="Detalle de pastelería artesanal" class="w-full h-full object-cover" loading="lazy" decoding="async">
+                        <div class="absolute inset-0 bg-black/5"></div>
+                    </div>
+                </div>
+
+                <div class="absolute top-10 -right-4 md:-right-8 bg-white/90 backdrop-blur-xl p-4 pr-6 rounded-2xl shadow-floating animate-float-fast delay-700 flex items-center gap-4 z-20">
+                    <div class="w-10 h-10 rounded-full bg-sand flex items-center justify-center text-gold">
+                        <iconify-icon icon="solar:cup-hot-linear" width="20" style="stroke-width: 1.5;"></iconify-icon>
+                    </div>
+                    <div class="flex flex-col justify-center">
+                        <span class="text-[0.65rem] font-medium text-espresso uppercase tracking-wider mb-0.5">Café de Especialidad</span>
+                        <div class="flex text-gold gap-0.5" role="img" aria-label="Calificación 5 de 5 estrellas">
+                            <iconify-icon icon="solar:star-bold" width="10"></iconify-icon>
+                            <iconify-icon icon="solar:star-bold" width="10"></iconify-icon>
+                            <iconify-icon icon="solar:star-bold" width="10"></iconify-icon>
+                            <iconify-icon icon="solar:star-bold" width="10"></iconify-icon>
+                            <iconify-icon icon="solar:star-bold" width="10"></iconify-icon>
+                        </div>
+                    </div>
+                </div>
+
+                <iconify-icon icon="solar:leaf-linear" width="80" class="absolute -top-10 left-10 text-gold/10 rotate-45 pointer-events-none animate-float-slow" aria-hidden="true"></iconify-icon>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator (dentro del hero, posición correcta) -->
+        <div class="absolute bottom-8 left-6 lg:left-16 hidden lg:flex items-center gap-3 animate-fade-up delay-1000 z-20">
+            <div class="w-px h-10 bg-stone2 relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-full bg-gold animate-scroll"></div>
+            </div>
+            <span class="text-[0.6rem] uppercase tracking-widest text-taupe font-medium" style="writing-mode: vertical-rl; text-orientation: mixed;">Descubrir</span>
+        </div>
+    </main>
+
+    <!-- Selección artesanal -->
+    <section id="seleccion" class="relative w-full px-6 lg:px-16 xl:px-24 py-24 lg:py-32 bg-cream z-10 overflow-hidden">
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-b from-stone2/50 to-transparent pointer-events-none rounded-bl-[10rem]"></div>
+
+        <div class="max-w-3xl mx-auto text-center mb-20 lg:mb-32 relative z-10">
+            <div class="flex items-center justify-center gap-4 mb-6">
+                <span class="w-12 h-px bg-gold/50"></span>
+                <span class="text-[0.65rem] uppercase tracking-widest font-medium text-gold">Selección Artesanal</span>
+                <span class="w-12 h-px bg-gold/50"></span>
+            </div>
+            <h2 class="text-4xl md:text-5xl lg:text-6xl font-serif font-normal leading-[1.1] tracking-tight text-espresso mb-8">
+                Brunch, repostería y café<br class="hidden sm:block"> elaborados con intención.
+            </h2>
+            <p class="text-base text-taupe font-light leading-relaxed max-w-xl mx-auto">
+                Nuestra propuesta gastronómica une el arte de la panadería europea con
+                una experiencia de brunch sofisticada. Cada creación es elaborada a mano
+                con técnica, paciencia y los ingredientes más excepcionales.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 items-start relative z-10 max-w-7xl mx-auto">
+            <!-- Croissant -->
+            <div class="lg:col-span-7 group">
+                <div class="relative w-full aspect-[4/3] rounded-[2rem] overflow-hidden shadow-premium mb-8">
+                    <img src="imgs/croassant.webp" alt="Croissant de pistacho artesanal" class="w-full h-full object-cover object-center scale-105 group-hover:scale-100 transition-transform duration-[2s] ease-out" loading="lazy" decoding="async">
+                    <div class="absolute inset-0 border border-white/30 rounded-[2rem] pointer-events-none mix-blend-overlay"></div>
+                </div>
+                <div class="pl-6 border-l border-gold/30 transform group-hover:translate-x-2 transition-transform duration-500 ease-out">
+                    <h3 class="text-2xl md:text-3xl font-serif text-espresso mb-2">Croissant de Pistacho</h3>
+                    <p class="text-sm text-taupe font-light max-w-md leading-relaxed">
+                        Hojaldre dorado y crujiente con alveolado perfecto, relleno de una
+                        crema sedosa de pistacho tostado. Un tributo a la viennoiserie tradicional.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Tostada -->
+            <div class="lg:col-span-4 lg:col-start-9 lg:mt-48 group">
+                <div class="relative w-full aspect-[3/4] md:aspect-square lg:aspect-[3/4] rounded-[2rem] overflow-hidden shadow-floating mb-8">
+                    <img src="imgs/torta.webp" alt="Tostada francesa gourmet con frutos del bosque" class="w-full h-full object-cover object-center scale-105 group-hover:scale-100 transition-transform duration-[2s] ease-out" loading="lazy" decoding="async">
+                    <div class="absolute inset-0 border border-white/30 rounded-[2rem] pointer-events-none mix-blend-overlay"></div>
+                </div>
+                <div class="pl-6 border-l border-gold/30 transform group-hover:translate-x-2 transition-transform duration-500 ease-out">
+                    <h3 class="text-2xl md:text-3xl font-serif text-espresso mb-2">Tostada Francesa</h3>
+                    <p class="text-sm text-taupe font-light max-w-md leading-relaxed">
+                        Gruesas rebanadas de pan brioche doradas en mantequilla,
+                        acompañadas de crema de mascarpone y sirope de maple puro.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Tarta Vasca -->
+            <div class="lg:col-span-5 lg:col-start-2 lg:-mt-24 group relative z-20">
+                <div class="relative w-full md:w-4/5 lg:w-full aspect-square rounded-[2rem] overflow-hidden shadow-premium ring-8 ring-cream">
+                    <img src="https://images.unsplash.com/photo-1601000938259-9e92002320b2?q=80&w=1000&auto=format&fit=crop"
+                         alt="Tarta vasca cremosa estilo San Sebastián" class="w-full h-full object-cover object-center scale-105 group-hover:scale-100 transition-transform duration-[2s] ease-out" loading="lazy" decoding="async">
+                    <div class="absolute inset-0 border border-white/30 rounded-[2rem] pointer-events-none mix-blend-overlay"></div>
+                </div>
+                <div class="relative z-30 bg-cream/90 backdrop-blur-md p-6 lg:p-8 rounded-2xl shadow-floating mx-4 md:mx-8 lg:-mr-16 -mt-12 lg:-mt-24 transform group-hover:-translate-y-2 transition-transform duration-500 ease-out">
+                    <h3 class="text-2xl md:text-3xl font-serif text-espresso mb-3">Tarta Vasca</h3>
+                    <p class="text-sm text-taupe font-light leading-relaxed">
+                        Inspirada en la receta tradicional de San Sebastián. Un exterior
+                        profundamente caramelizado que contrasta con un centro
+                        increíblemente cremoso.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brunch experience -->
+    <section class="relative w-full px-6 lg:px-16 xl:px-24 py-24 lg:py-32 bg-espresso z-10 overflow-hidden">
+        <div class="absolute inset-0 pointer-events-none">
+            <div class="absolute top-[-20%] left-[-10%] w-1/2 h-1/2 bg-gold/10 blur-[120px] rounded-full mix-blend-screen"></div>
+            <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-stone2/5 blur-[100px] rounded-full"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="max-w-2xl mb-16 lg:mb-24">
+                <div class="flex items-center gap-4 mb-6 animate-fade-up">
+                    <span class="w-10 h-px bg-gold"></span>
+                    <span class="text-[0.65rem] uppercase tracking-widest font-medium text-gold">Signature Brunch Experience</span>
+                </div>
+                <h2 class="text-4xl md:text-5xl lg:text-6xl font-serif font-normal leading-[1.1] tracking-tight text-cream mb-8 animate-fade-up delay-100">
+                    Un espacio diseñado<br class="hidden sm:block"> para disfrutar lentamente.
+                </h2>
+                <p class="text-base text-mist font-light leading-relaxed max-w-xl animate-fade-up delay-200">
+                    Sumérgete en la auténtica cultura del brunch europeo. Mañanas
+                    tranquilas llenas de calidez, el aroma a pan recién horneado y café
+                    de especialidad servido con intención.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                <div class="lg:col-span-8 relative group z-10">
+                    <div class="relative w-full aspect-[4/3] md:aspect-[16/9] rounded-[2rem] overflow-hidden shadow-premium animate-reveal delay-300">
+                        <img src="imgs/mesas-2.webp" alt="Ambiente del brunch en Raffaello Bakery" class="w-full h-full object-cover object-center scale-105 group-hover:scale-100 transition-transform duration-[3s] ease-out" loading="lazy" decoding="async">
+                        <div class="absolute inset-0 bg-black/10 transition-colors duration-500 group-hover:bg-transparent pointer-events-none"></div>
+                        <div class="absolute inset-0 border border-white/10 rounded-[2rem] pointer-events-none mix-blend-overlay"></div>
+                    </div>
+                    <div class="absolute -bottom-6 -right-4 md:-bottom-10 md:-right-10 bg-cream p-6 md:p-8 rounded-2xl shadow-floating animate-float-slow delay-500 z-30 max-w-[240px] md:max-w-[280px]">
+                        <p class="font-serif text-espresso text-xl md:text-2xl leading-snug mb-4">"Cada mesa cuenta<br>una historia."</p>
+                        <div class="w-12 h-px bg-gold/60"></div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-4 flex flex-col gap-6 md:gap-10 mt-12 lg:mt-0 relative z-20">
+                    <div class="relative w-4/5 md:w-3/4 lg:w-full aspect-square rounded-[1.5rem] overflow-hidden shadow-premium ml-auto animate-fade-up delay-400 group">
+                        <img src="imgs/mesas.webp" alt="Interior cálido del café" class="w-full h-full object-cover object-center scale-105 group-hover:scale-100 transition-transform duration-[3s] ease-out" loading="lazy" decoding="async">
+                        <div class="absolute inset-0 border border-white/10 rounded-[1.5rem] pointer-events-none mix-blend-overlay"></div>
+                    </div>
+                    <div class="relative w-3/4 md:w-2/3 lg:w-[110%] aspect-[4/5] rounded-[1.5rem] overflow-hidden shadow-premium -ml-4 lg:-ml-12 animate-fade-up delay-700 group">
+                        <img src="imgs/personas-mesa.webp" alt="Clientes disfrutando del brunch" class="w-full h-full object-cover object-center scale-105 group-hover:scale-100 transition-transform duration-[3s] ease-out" loading="lazy" decoding="async">
+                        <div class="absolute inset-0 border border-white/10 rounded-[1.5rem] pointer-events-none mix-blend-overlay"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Historia -->
+    <section id="historia" class="relative w-full px-6 lg:px-16 xl:px-24 py-24 lg:py-32 bg-cream z-10 overflow-hidden">
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+                <div class="relative group order-2 lg:order-1">
+                    <div class="relative w-full aspect-[4/5] rounded-[2rem] overflow-hidden shadow-premium">
+                        <img src="imgs/mesas-2.webp" alt="Panadero horneando pan artesanal de masa madre" class="w-full h-full object-cover object-center scale-105 group-hover:scale-100 transition-transform duration-[3s] ease-out" loading="lazy" decoding="async">
+                        <div class="absolute inset-0 border border-white/30 rounded-[2rem] pointer-events-none mix-blend-overlay"></div>
+                    </div>
+                    <div class="absolute -top-8 -right-8 w-40 h-40 bg-stone2 rounded-full blur-3xl -z-10"></div>
+                    <div class="absolute -bottom-8 -left-8 w-48 h-48 bg-gold/10 rounded-full blur-3xl -z-10"></div>
+                </div>
+                <div class="flex flex-col justify-center order-1 lg:order-2">
+                    <div class="flex items-center gap-4 mb-6">
+                        <span class="w-10 h-px bg-gold"></span>
+                        <span class="text-[0.65rem] uppercase tracking-widest font-medium text-gold">Nuestra Historia</span>
+                    </div>
+                    <h2 class="text-4xl md:text-5xl lg:text-6xl font-serif font-normal leading-[1.1] tracking-tight text-espresso mb-8">
+                        Tradición y pasión<br class="hidden sm:block"> en cada detalle.
+                    </h2>
+                    <p class="text-base text-taupe font-light leading-relaxed mb-6">
+                        Raffaello Bakery nace de una pasión genuina por la panadería
+                        europea y el deseo de crear un refugio gastronómico en
+                        Villavicencio. Creemos que el buen pan requiere tiempo,
+                        respeto por los ingredientes y maestría en el proceso.
+                    </p>
+                    <p class="text-base text-taupe font-light leading-relaxed mb-10">
+                        Nuestros panaderos se despiertan antes del amanecer para amasar,
+                        dar forma y hornear, asegurando que cada pieza llegue a su mesa
+                        con la textura perfecta y el sabor más auténtico.
+                    </p>
+                    <div class="grid grid-cols-2 gap-8 pt-8 border-t border-stone2">
+                        <div>
+                            <h4 class="text-3xl md:text-4xl font-serif text-espresso mb-2">100%</h4>
+                            <span class="text-xs uppercase tracking-wider text-taupe font-medium">Masa Madre Natural</span>
+                        </div>
+                        <div>
+                            <h4 class="text-3xl md:text-4xl font-serif text-espresso mb-2">48h</h4>
+                            <span class="text-xs uppercase tracking-wider text-taupe font-medium">Fermentación Lenta</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menú -->
+    <section id="menu" class="relative w-full px-6 lg:px-16 xl:px-24 py-24 lg:py-40 bg-sand z-10 overflow-hidden">
+        <div class="absolute inset-0 pointer-events-none">
+            <div class="absolute top-20 right-[-10%] w-[40%] h-[40%] bg-gold/5 blur-[120px] rounded-full"></div>
+            <div class="absolute bottom-[-10%] left-[-10%] w-1/2 h-1/2 bg-stone2/40 blur-[100px] rounded-full"></div>
+        </div>
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="max-w-3xl mx-auto text-center mb-12 md:mb-16">
+                <div class="flex items-center justify-center gap-4 mb-6 animate-fade-up">
+                    <span class="w-12 h-px bg-gold/50"></span>
+                    <span class="text-[0.65rem] uppercase tracking-widest font-medium text-gold">Menú Gastronómico</span>
+                    <span class="w-12 h-px bg-gold/50"></span>
+                </div>
+                <h2 class="text-4xl md:text-5xl lg:text-6xl font-serif font-normal leading-[1.1] tracking-tight text-espresso mb-6 animate-fade-up delay-100">Nuestra selección.</h2>
+                <p class="text-base text-taupe font-light leading-relaxed max-w-xl mx-auto animate-fade-up delay-200">
+                    Descubre los sabores que definen la experiencia de Raffaello Bakery,
+                    elaborados a mano con técnicas artesanales.
+                </p>
+            </div>
+
+            <!-- Tabs funcionales -->
+            <div class="flex flex-wrap justify-center gap-3 md:gap-4 mb-16 animate-fade-up delay-200" role="tablist" aria-label="Categorías del menú">
+                <button data-filter="brunch" role="tab" aria-selected="true" class="tab-btn px-6 py-2.5 rounded-full text-[0.65rem] uppercase tracking-widest font-medium transition-all shadow-md bg-espresso text-white">Brunch</button>
+                <button data-filter="bakery" role="tab" aria-selected="false" class="tab-btn px-6 py-2.5 rounded-full bg-white border border-stone2 text-taupe hover:text-espresso hover:border-gold hover:shadow-sm text-[0.65rem] uppercase tracking-widest font-medium transition-all">Bakery</button>
+                <button data-filter="cafe" role="tab" aria-selected="false" class="tab-btn px-6 py-2.5 rounded-full bg-white border border-stone2 text-taupe hover:text-espresso hover:border-gold hover:shadow-sm text-[0.65rem] uppercase tracking-widest font-medium transition-all">Café</button>
+                <button data-filter="frias" role="tab" aria-selected="false" class="tab-btn px-6 py-2.5 rounded-full bg-white border border-stone2 text-taupe hover:text-espresso hover:border-gold hover:shadow-sm text-[0.65rem] uppercase tracking-widest font-medium transition-all">Bebidas Frías</button>
+                <button data-filter="postres" role="tab" aria-selected="false" class="tab-btn px-6 py-2.5 rounded-full bg-white border border-stone2 text-taupe hover:text-espresso hover:border-gold hover:shadow-sm text-[0.65rem] uppercase tracking-widest font-medium transition-all">Postres</button>
+            </div>
+
+            <div id="menuGrid" class="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-6 lg:gap-y-8 animate-fade-up delay-300 max-w-6xl mx-auto">
+
+                <!-- Brunch -->
+                <article data-cat="brunch" class="menu-item group flex items-center gap-5 p-4 md:p-5 rounded-2xl hover:bg-white hover:shadow-floating transition-all duration-500 border border-transparent hover:border-white/60">
+                    <div class="relative w-24 h-24 sm:w-28 sm:h-28 shrink-0 rounded-xl overflow-hidden shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1603036066804-0371a337ab14?q=80&w=800&auto=format&fit=crop" alt="Croque madame con huevo frito" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out" loading="lazy" decoding="async">
+                        <div class="absolute top-2 left-2 bg-cream/95 backdrop-blur-md px-2 py-1 rounded text-[0.55rem] uppercase tracking-wider font-semibold text-espresso shadow-sm">Chef Selection</div>
+                    </div>
+                    <div class="flex-1 py-1">
+                        <div class="flex items-baseline justify-between mb-1 gap-2 sm:gap-4">
+                            <h3 class="text-lg sm:text-xl font-serif text-espresso group-hover:text-gold transition-colors duration-300">Croque Madame</h3>
+                            <div class="flex-1 border-b border-dotted border-mist opacity-60 relative -top-1"></div>
+                            <span class="text-sm sm:text-base font-medium text-espresso tracking-wide tabular-nums">$28.000</span>
+                        </div>
+                        <p class="text-[0.7rem] sm:text-xs text-taupe font-light leading-relaxed line-clamp-2">Pan brioche artesanal, jamón premium, queso gruyère fundido, salsa bechamel y huevo frito.</p>
+                    </div>
+                </article>
+
+                <article data-cat="brunch" class="menu-item group flex items-center gap-5 p-4 md:p-5 rounded-2xl hover:bg-white hover:shadow-floating transition-all duration-500 border border-transparent hover:border-white/60">
+                    <div class="relative w-24 h-24 sm:w-28 sm:h-28 shrink-0 rounded-xl overflow-hidden shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1619881589316-56c7f9e6b587?q=80&w=800&auto=format&fit=crop" alt="Sándwich de roastbeef en pan de masa madre" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out" loading="lazy" decoding="async">
+                        <div class="absolute top-2 left-2 bg-espresso/90 backdrop-blur-md px-2 py-1 rounded text-[0.55rem] uppercase tracking-wider font-semibold text-white shadow-sm">Masa Madre</div>
+                    </div>
+                    <div class="flex-1 py-1">
+                        <div class="flex items-baseline justify-between mb-1 gap-2 sm:gap-4">
+                            <h3 class="text-lg sm:text-xl font-serif text-espresso group-hover:text-gold transition-colors duration-300">Sandwich Roastbeef</h3>
+                            <div class="flex-1 border-b border-dotted border-mist opacity-60 relative -top-1"></div>
+                            <span class="text-sm sm:text-base font-medium text-espresso tracking-wide tabular-nums">$32.000</span>
+                        </div>
+                        <p class="text-[0.7rem] sm:text-xs text-taupe font-light leading-relaxed line-clamp-2">Finas láminas de roastbeef, cebolla caramelizada y aderezos en pan rústico de 48h de fermentación.</p>
+                    </div>
+                </article>
+
+                <article data-cat="brunch" class="menu-item group flex items-center gap-5 p-4 md:p-5 rounded-2xl hover:bg-white hover:shadow-floating transition-all duration-500 border border-transparent hover:border-white/60">
+                    <div class="relative w-24 h-24 sm:w-28 sm:h-28 shrink-0 rounded-xl overflow-hidden shadow-sm">
+                        <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/4734259a-bad7-422f-981e-ce01e79184f2_1600w.jpg" alt="Tostada francesa con frutos del bosque" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out" loading="lazy" decoding="async">
+                        <div class="absolute top-2 left-2 bg-gold/95 backdrop-blur-md px-2 py-1 rounded text-[0.55rem] uppercase tracking-wider font-semibold text-white shadow-sm">Best Seller</div>
+                    </div>
+                    <div class="flex-1 py-1">
+                        <div class="flex items-baseline justify-between mb-1 gap-2 sm:gap-4">
+                            <h3 class="text-lg sm:text-xl font-serif text-espresso group-hover:text-gold transition-colors duration-300">Tostada Francesa</h3>
+                            <div class="flex-1 border-b border-dotted border-mist opacity-60 relative -top-1"></div>
+                            <span class="text-sm sm:text-base font-medium text-espresso tracking-wide tabular-nums">$26.000</span>
+                        </div>
+                        <p class="text-[0.7rem] sm:text-xs text-taupe font-light leading-relaxed line-clamp-2">Pan brioche dorado en mantequilla, crema de mascarpone, frutos del bosque y sirope de maple puro.</p>
+                    </div>
+                </article>
+
+                <article data-cat="brunch" class="menu-item group flex items-center gap-5 p-4 md:p-5 rounded-2xl hover:bg-white hover:shadow-floating transition-all duration-500 border border-transparent hover:border-white/60">
+                    <div class="relative w-24 h-24 sm:w-28 sm:h-28 shrink-0 rounded-xl overflow-hidden shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1608198093002-ad4e005484ec?q=80&w=800&auto=format&fit=crop" alt="Avocado toast vegano en pan de masa madre" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out" loading="lazy" decoding="async">
+                        <div class="absolute top-2 left-2 bg-cream/95 backdrop-blur-md px-2 py-1 rounded text-[0.55rem] uppercase tracking-wider font-semibold text-espresso shadow-sm">Vegano</div>
+                    </div>
+                    <div class="flex-1 py-1">
+                        <div class="flex items-baseline justify-between mb-1 gap-2 sm:gap-4">
+                            <h3 class="text-lg sm:text-xl font-serif text-espresso group-hover:text-gold transition-colors duration-300">Avocado Toast</h3>
+                            <div class="flex-1 border-b border-dotted border-mist opacity-60 relative -top-1"></div>
+                            <span class="text-sm sm:text-base font-medium text-espresso tracking-wide tabular-nums">$22.000</span>
+                        </div>
+                        <p class="text-[0.7rem] sm:text-xs text-taupe font-light leading-relaxed line-clamp-2">Aguacate hass macerado, tomates cherry confitados, rábano y semillas de calabaza tostadas.</p>
+                    </div>
+                </article>
+
+                <!-- Bakery -->
+                <article data-cat="bakery" class="menu-item group flex items-center gap-5 p-4 md:p-5 rounded-2xl hover:bg-white hover:shadow-floating transition-all duration-500 border border-transparent hover:border-white/60">
+                    <div class="relative w-24 h-24 sm:w-28 sm:h-28 shrink-0 rounded-xl overflow-hidden shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1620921575497-2808c73449bb?q=80&w=800&auto=format&fit=crop" alt="NY roll de pistacho con crema tostada" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out" loading="lazy" decoding="async">
+                        <div class="absolute top-2 left-2 bg-gold/95 backdrop-blur-md px-2 py-1 rounded text-[0.55rem] uppercase tracking-wider font-semibold text-white shadow-sm">Nuevo</div>
+                    </div>
+                    <div class="flex-1 py-1">
+                        <div class="flex items-baseline justify-between mb-1 gap-2 sm:gap-4">
+                            <h3 class="text-lg sm:text-xl font-serif text-espresso group-hover:text-gold transition-colors duration-300">NY Roll Pistacho</h3>
+                            <div class="flex-1 border-b border-dotted border-mist opacity-60 relative -top-1"></div>
+                            <span class="text-sm sm:text-base font-medium text-espresso tracking-wide tabular-nums">$18.000</span>
+                        </div>
+                        <p class="text-[0.7rem] sm:text-xs text-taupe font-light leading-relaxed line-clamp-2">Masa laminada crujiente rellena de crema untuosa de pistacho tostado.</p>
+                    </div>
+                </article>
+
+                <article data-cat="bakery" class="menu-item group flex items-center gap-5 p-4 md:p-5 rounded-2xl hover:bg-white hover:shadow-floating transition-all duration-500 border border-transparent hover:border-white/60">
+                    <div class="relative w-24 h-24 sm:w-28 sm:h-28 shrink-0 rounded-xl overflow-hidden shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1608198093002-ad4e005484ec?q=80&w=800&auto=format&fit=crop" alt="Croissant clásico de mantequilla" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out" loading="lazy" decoding="async">
+                        <div class="absolute top-2 left-2 bg-espresso/90 backdrop-blur-md px-2 py-1 rounded text-[0.55rem] uppercase tracking-wider font-semibold text-white shadow-sm">Clásico</div>
+                    </div>
+                    <div class="flex-1 py-1">
+                        <div class="flex items-baseline justify-between mb-1 gap-2 sm:gap-4">
+                            <h3 class="text-lg sm:text-xl font-serif text-espresso group-hover:text-gold transition-colors duration-300">Croissant de Mantequilla</h3>
+                            <div class="flex-1 border-b border-dotted border-mist opacity-60 relative -top-1"></div>
+                            <span class="text-sm sm:text-base font-medium text-espresso tracking-wide tabular-nums">$9.000</span>
+                        </div>
+                        <p class="text-[0.7rem] sm:text-xs text-taupe font-light leading-relaxed line-clamp-2">Hojaldre de 27 capas con mantequilla europea y alveolado perfecto.</p>
+                    </div>
+                </article>
+
+                <!-- Café -->
+                <article data-cat="cafe" class="menu-item group flex items-center gap-5 p-4 md:p-5 rounded-2xl hover:bg-white hover:shadow-floating transition-all duration-500 border border-transparent hover:border-white/60">
+                    <div class="relative w-24 h-24 sm:w-28 sm:h-28 shrink-0 rounded-xl overflow-hidden shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?q=80&w=800&auto=format&fit=crop" alt="Café de especialidad servido en taza" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out" loading="lazy" decoding="async">
+                        <div class="absolute top-2 left-2 bg-espresso/90 backdrop-blur-md px-2 py-1 rounded text-[0.55rem] uppercase tracking-wider font-semibold text-white shadow-sm">Specialty</div>
+                    </div>
+                    <div class="flex-1 py-1">
+                        <div class="flex items-baseline justify-between mb-1 gap-2 sm:gap-4">
+                            <h3 class="text-lg sm:text-xl font-serif text-espresso group-hover:text-gold transition-colors duration-300">Espresso Doble</h3>
+                            <div class="flex-1 border-b border-dotted border-mist opacity-60 relative -top-1"></div>
+                            <span class="text-sm sm:text-base font-medium text-espresso tracking-wide tabular-nums">$8.000</span>
+                        </div>
+                        <p class="text-[0.7rem] sm:text-xs text-taupe font-light leading-relaxed line-clamp-2">Blend de origen colombiano con notas a chocolate, caramelo y naranja.</p>
+                    </div>
+                </article>
+
+                <article data-cat="cafe" class="menu-item group flex items-center gap-5 p-4 md:p-5 rounded-2xl hover:bg-white hover:shadow-floating transition-all duration-500 border border-transparent hover:border-white/60">
+                    <div class="relative w-24 h-24 sm:w-28 sm:h-28 shrink-0 rounded-xl overflow-hidden shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?q=80&w=800&auto=format&fit=crop" alt="Cappuccino con arte latte" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out" loading="lazy" decoding="async">
+                        <div class="absolute top-2 left-2 bg-gold/95 backdrop-blur-md px-2 py-1 rounded text-[0.55rem] uppercase tracking-wider font-semibold text-white shadow-sm">Favorito</div>
+                    </div>
+                    <div class="flex-1 py-1">
+                        <div class="flex items-baseline justify-between mb-1 gap-2 sm:gap-4">
+                            <h3 class="text-lg sm:text-xl font-serif text-espresso group-hover:text-gold transition-colors duration-300">Cappuccino</h3>
+                            <div class="flex-1 border-b border-dotted border-mist opacity-60 relative -top-1"></div>
+                            <span class="text-sm sm:text-base font-medium text-espresso tracking-wide tabular-nums">$10.000</span>
+                        </div>
+                        <p class="text-[0.7rem] sm:text-xs text-taupe font-light leading-relaxed line-clamp-2">Espresso, leche vaporizada a 65°C y arte latte de la casa.</p>
+                    </div>
+                </article>
+
+                <!-- Bebidas frías -->
+                <article data-cat="frias" class="menu-item group flex items-center gap-5 p-4 md:p-5 rounded-2xl hover:bg-white hover:shadow-floating transition-all duration-500 border border-transparent hover:border-white/60">
+                    <div class="relative w-24 h-24 sm:w-28 sm:h-28 shrink-0 rounded-xl overflow-hidden shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?q=80&w=800&auto=format&fit=crop" alt="Nevado de café frappé cremoso" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out" loading="lazy" decoding="async">
+                        <div class="absolute top-2 left-2 bg-espresso/90 backdrop-blur-md px-2 py-1 rounded text-[0.55rem] uppercase tracking-wider font-semibold text-white shadow-sm">Ice Blended</div>
+                    </div>
+                    <div class="flex-1 py-1">
+                        <div class="flex items-baseline justify-between mb-1 gap-2 sm:gap-4">
+                            <h3 class="text-lg sm:text-xl font-serif text-espresso group-hover:text-gold transition-colors duration-300">Nevado de Café</h3>
+                            <div class="flex-1 border-b border-dotted border-mist opacity-60 relative -top-1"></div>
+                            <span class="text-sm sm:text-base font-medium text-espresso tracking-wide tabular-nums">$16.000</span>
+                        </div>
+                        <p class="text-[0.7rem] sm:text-xs text-taupe font-light leading-relaxed line-clamp-2">Café de especialidad frappé a la perfección, con textura cremosa.</p>
+                    </div>
+                </article>
+
+                <!-- Postres -->
+                <article data-cat="postres" class="menu-item group flex items-center gap-5 p-4 md:p-5 rounded-2xl hover:bg-white hover:shadow-floating transition-all duration-500 border border-transparent hover:border-white/60">
+                    <div class="relative w-24 h-24 sm:w-28 sm:h-28 shrink-0 rounded-xl overflow-hidden shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1601000938259-9e92002320b2?q=80&w=800&auto=format&fit=crop" alt="Tarta vasca cremosa estilo San Sebastián" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out" loading="lazy" decoding="async">
+                        <div class="absolute top-2 left-2 bg-gold/95 backdrop-blur-md px-2 py-1 rounded text-[0.55rem] uppercase tracking-wider font-semibold text-white shadow-sm">Best Seller</div>
+                    </div>
+                    <div class="flex-1 py-1">
+                        <div class="flex items-baseline justify-between mb-1 gap-2 sm:gap-4">
+                            <h3 class="text-lg sm:text-xl font-serif text-espresso group-hover:text-gold transition-colors duration-300">Tarta Vasca</h3>
+                            <div class="flex-1 border-b border-dotted border-mist opacity-60 relative -top-1"></div>
+                            <span class="text-sm sm:text-base font-medium text-espresso tracking-wide tabular-nums">$15.000</span>
+                        </div>
+                        <p class="text-[0.7rem] sm:text-xs text-taupe font-light leading-relaxed line-clamp-2">Exterior caramelizado y centro cremoso que se deshace en el paladar.</p>
+                    </div>
+                </article>
+            </div>
+
+            <div class="mt-16 flex justify-center animate-fade-up delay-400">
+                <a href="#" class="group relative px-8 py-3.5 bg-transparent border border-gold text-espresso text-xs font-medium rounded-full overflow-hidden flex items-center justify-center gap-3 transition-transform duration-300 hover:-translate-y-0.5">
+                    <span class="relative z-10 group-hover:text-white transition-colors duration-300">Descargar Menú PDF</span>
+                    <iconify-icon icon="solar:download-linear" width="16" class="relative z-10 group-hover:translate-y-0.5 group-hover:text-white transition-all duration-300"></iconify-icon>
+                    <div class="absolute inset-0 bg-gold translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out z-0"></div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experiencia -->
+    <section id="experiencia" class="relative w-full px-6 lg:px-16 xl:px-24 py-24 lg:py-40 bg-cream z-10 overflow-hidden border-t border-stone2">
+        <div class="absolute inset-0 pointer-events-none">
+            <div class="absolute top-[10%] right-[-10%] w-[40%] h-[40%] bg-gold/10 blur-[120px] rounded-full mix-blend-multiply"></div>
+            <div class="absolute bottom-[-10%] left-[-10%] w-1/2 h-1/2 bg-stone2 blur-[100px] rounded-full mix-blend-multiply"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="max-w-2xl mb-16 lg:mb-24">
+                <div class="flex items-center gap-4 mb-6 animate-fade-up">
+                    <span class="w-12 h-px bg-gold/50"></span>
+                    <span class="text-[0.65rem] uppercase tracking-widest font-medium text-gold">La Experiencia Raffaello</span>
+                </div>
+                <h2 class="text-4xl md:text-5xl lg:text-6xl font-serif font-normal leading-[1.1] tracking-tight text-espresso mb-8 animate-fade-up delay-100">
+                    Más que un brunch,<br class="hidden sm:block"> una experiencia inmersiva.
+                </h2>
+                <p class="text-base text-taupe font-light leading-relaxed max-w-xl animate-fade-up delay-200">
+                    Un refugio arquitectónico inspirado en los clásicos cafés europeos,
+                    diseñado para que el tiempo se detenga.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
+                <div class="lg:col-span-7 relative group z-10">
+                    <div class="relative w-full aspect-[4/5] lg:aspect-[3/4] rounded-[2rem] overflow-hidden shadow-premium animate-reveal delay-300">
+                        <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=2000&auto=format&fit=crop"
+                             alt="Diseño interior del café con estilo europeo" class="w-full h-full object-cover object-center scale-105 group-hover:scale-100 transition-transform duration-[4s] ease-out" loading="lazy" decoding="async">
+                        <div class="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors duration-700 pointer-events-none"></div>
+                        <div class="absolute inset-0 border border-white/20 rounded-[2rem] pointer-events-none mix-blend-overlay"></div>
+                    </div>
+
+                    <div class="absolute top-1/4 -right-6 md:-right-12 bg-white/80 backdrop-blur-xl p-5 pr-8 rounded-2xl shadow-floating animate-float-slow delay-500 z-30 hidden md:flex items-center gap-5">
+                        <div class="w-12 h-12 rounded-full bg-cream border border-stone2 flex items-center justify-center text-gold">
+                            <iconify-icon icon="solar:armchair-linear" width="24" style="stroke-width: 1.5;"></iconify-icon>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-[0.65rem] font-medium text-taupe uppercase tracking-wider mb-1">Espacios de Diseño</span>
+                            <span class="font-serif text-espresso text-lg">Luz Natural &amp; Confort</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 flex flex-col gap-12 lg:gap-16 mt-12 lg:mt-0 relative z-20">
+                    <div class="relative">
+                        <p class="font-serif text-espresso text-2xl md:text-3xl leading-snug mb-8 animate-fade-up delay-400 pl-5 border-l-2 border-gold/30">
+                            "El arte de reunirse<br>alrededor del buen café."
+                        </p>
+                        <div class="relative w-[85%] ml-auto aspect-square rounded-[1.5rem] overflow-hidden shadow-floating animate-fade-up delay-500 group">
+                            <img src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?q=80&w=1000&auto=format&fit=crop"
+                                 alt="Mesa servida con café de especialidad" class="w-full h-full object-cover object-center scale-105 group-hover:scale-100 transition-transform duration-[4s] ease-out" loading="lazy" decoding="async">
+                            <div class="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors duration-700 pointer-events-none"></div>
+                            <div class="absolute inset-0 border border-white/30 rounded-[1.5rem] pointer-events-none mix-blend-overlay"></div>
+                        </div>
+                    </div>
+
+                    <div class="relative flex flex-col items-start gap-6 lg:-ml-12 animate-fade-up delay-700">
+                        <div class="relative w-3/4 aspect-[4/3] rounded-[1.5rem] overflow-hidden shadow-premium group">
+                            <img src="https://images.unsplash.com/photo-1525610553991-2bede1a236e2?q=80&w=1000&auto=format&fit=crop"
+                                 alt="Personas disfrutando el brunch" class="w-full h-full object-cover object-center scale-105 group-hover:scale-100 transition-transform duration-[4s] ease-out" loading="lazy" decoding="async">
+                            <div class="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors duration-700 pointer-events-none"></div>
+                            <div class="absolute inset-0 border border-white/20 rounded-[1.5rem] pointer-events-none mix-blend-overlay"></div>
+                        </div>
+                        <p class="text-sm text-taupe font-light italic max-w-xs pl-4 border-l border-mist leading-relaxed">
+                            "Cada mañana merece ser disfrutada lentamente, en un espacio que
+                            eleve los sentidos."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonios -->
+    <section class="relative w-full px-6 lg:px-16 xl:px-24 py-24 lg:py-32 bg-sand z-10 overflow-hidden border-t border-stone2">
+        <div class="absolute inset-0 pointer-events-none">
+            <div class="absolute top-[10%] right-[10%] w-[40%] h-[40%] bg-gold/5 blur-[120px] rounded-full mix-blend-multiply"></div>
+            <div class="absolute bottom-[10%] left-[-10%] w-[30%] h-[30%] bg-stone2/50 blur-[100px] rounded-full mix-blend-multiply"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16 lg:mb-24">
+                <div class="max-w-2xl">
+                    <div class="flex items-center gap-4 mb-6 animate-fade-up">
+                        <span class="w-10 h-px bg-gold/50"></span>
+                        <span class="text-[0.65rem] uppercase tracking-widest font-medium text-gold">Experiencias</span>
+                    </div>
+                    <h2 class="text-4xl md:text-5xl lg:text-6xl font-serif font-normal leading-[1.1] tracking-tight text-espresso mb-6 animate-fade-up delay-100">Momentos que permanecen.</h2>
+                    <p class="text-base text-taupe font-light leading-relaxed animate-fade-up delay-200 max-w-lg">
+                        Historias de quienes han cruzado nuestras puertas y encontrado un pequeño refugio gastronómico.
+                    </p>
+                </div>
+
+                <div class="flex items-center gap-5 bg-white/70 backdrop-blur-md px-6 py-5 rounded-2xl shadow-floating border border-white/60 animate-fade-up delay-300 w-fit">
+                    <div class="flex flex-col">
+                        <span class="text-3xl font-serif text-espresso leading-none mb-1">4.9</span>
+                        <span class="text-[0.6rem] uppercase tracking-widest text-taupe font-medium">Average Rating</span>
+                    </div>
+                    <div class="w-px h-10 bg-stone2"></div>
+                    <div class="flex text-gold gap-1" role="img" aria-label="4.9 de 5 estrellas">
+                        <iconify-icon icon="solar:star-bold" width="18"></iconify-icon>
+                        <iconify-icon icon="solar:star-bold" width="18"></iconify-icon>
+                        <iconify-icon icon="solar:star-bold" width="18"></iconify-icon>
+                        <iconify-icon icon="solar:star-bold" width="18"></iconify-icon>
+                        <iconify-icon icon="solar:star-bold" width="18"></iconify-icon>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-10 items-start">
+                <figure class="group bg-white/50 backdrop-blur-md p-8 md:p-10 rounded-[2rem] shadow-sm hover:shadow-floating hover:-translate-y-2 transition-all duration-500 ease-out border border-stone2/60 hover:border-white animate-fade-up delay-300 flex flex-col h-full">
+                    <div class="flex items-center gap-1 text-gold mb-8" role="img" aria-label="5 estrellas">
+                        <iconify-icon icon="solar:star-bold" width="12"></iconify-icon><iconify-icon icon="solar:star-bold" width="12"></iconify-icon><iconify-icon icon="solar:star-bold" width="12"></iconify-icon><iconify-icon icon="solar:star-bold" width="12"></iconify-icon><iconify-icon icon="solar:star-bold" width="12"></iconify-icon>
+                    </div>
+                    <blockquote class="font-serif text-espresso text-xl md:text-2xl leading-snug mb-10 flex-grow">"No es solo brunch, es una experiencia completa que despierta todos los sentidos."</blockquote>
+                    <figcaption class="flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-full bg-cream border border-stone2 flex items-center justify-center text-taupe font-serif">V</div>
+                        <div>
+                            <h4 class="text-sm font-medium text-espresso">Valeria M.</h4>
+                            <p class="text-[0.65rem] text-taupe uppercase tracking-wider">Villavicencio</p>
+                        </div>
+                    </figcaption>
+                </figure>
+
+                <figure class="group bg-cream/80 backdrop-blur-md p-8 md:p-10 rounded-[2rem] shadow-sm hover:shadow-floating hover:-translate-y-2 transition-all duration-500 ease-out border border-stone2/60 hover:border-white animate-fade-up delay-400 flex flex-col h-full md:mt-12">
+                    <div class="flex items-center gap-1 text-gold mb-8" role="img" aria-label="5 estrellas">
+                        <iconify-icon icon="solar:star-bold" width="12"></iconify-icon><iconify-icon icon="solar:star-bold" width="12"></iconify-icon><iconify-icon icon="solar:star-bold" width="12"></iconify-icon><iconify-icon icon="solar:star-bold" width="12"></iconify-icon><iconify-icon icon="solar:star-bold" width="12"></iconify-icon>
+                    </div>
+                    <blockquote class="font-serif text-espresso text-xl md:text-2xl leading-snug mb-10 flex-grow">"El mejor café de especialidad que he probado. Cada detalle se siente cuidadosamente pensado."</blockquote>
+                    <figcaption class="flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-full bg-cream border border-stone2 flex items-center justify-center text-taupe font-serif">C</div>
+                        <div>
+                            <h4 class="text-sm font-medium text-espresso">Carlos D.</h4>
+                            <p class="text-[0.65rem] text-taupe uppercase tracking-wider">Bogotá</p>
+                        </div>
+                    </figcaption>
+                </figure>
+
+                <figure class="group bg-white/50 backdrop-blur-md p-8 md:p-10 rounded-[2rem] shadow-sm hover:shadow-floating hover:-translate-y-2 transition-all duration-500 ease-out border border-stone2/60 hover:border-white animate-fade-up delay-500 flex flex-col h-full">
+                    <div class="flex items-center gap-1 text-gold mb-8" role="img" aria-label="5 estrellas">
+                        <iconify-icon icon="solar:star-bold" width="12"></iconify-icon><iconify-icon icon="solar:star-bold" width="12"></iconify-icon><iconify-icon icon="solar:star-bold" width="12"></iconify-icon><iconify-icon icon="solar:star-bold" width="12"></iconify-icon><iconify-icon icon="solar:star-bold" width="12"></iconify-icon>
+                    </div>
+                    <blockquote class="font-serif text-espresso text-xl md:text-2xl leading-snug mb-10 flex-grow">"La tarta vasca y el ambiente parisino me transportaron. Un rincón mágico en la ciudad."</blockquote>
+                    <figcaption class="flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-full bg-cream border border-stone2 flex items-center justify-center text-taupe font-serif">A</div>
+                        <div>
+                            <h4 class="text-sm font-medium text-espresso">Andrea R.</h4>
+                            <p class="text-[0.65rem] text-taupe uppercase tracking-wider">Local Guide</p>
+                        </div>
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visítanos -->
+    <section id="visitanos" class="relative w-full px-6 lg:px-16 xl:px-24 py-24 lg:py-40 bg-night z-10 overflow-hidden">
+        <div class="absolute inset-0 pointer-events-none">
+            <div class="absolute top-[-20%] right-[-10%] w-1/2 h-1/2 bg-gold/10 blur-[120px] rounded-full mix-blend-screen"></div>
+            <div class="absolute bottom-[-10%] left-[-10%] w-[40%] h-[40%] bg-cream/5 blur-[100px] rounded-full"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+                <div class="lg:col-span-5 flex flex-col justify-center order-2 lg:order-1">
+                    <div class="flex items-center gap-4 mb-8 animate-fade-up">
+                        <span class="w-12 h-px bg-gold/60"></span>
+                        <span class="text-[0.65rem] uppercase tracking-widest font-medium text-gold">Visítanos</span>
+                    </div>
+
+                    <h2 class="text-4xl md:text-5xl lg:text-6xl font-serif font-normal leading-[1.1] tracking-tight text-cream mb-8 animate-fade-up delay-100">
+                        Cada visita comienza con el aroma del pan recién horneado.
+                    </h2>
+
+                    <p class="text-base text-mist font-light leading-relaxed mb-12 animate-fade-up delay-200">
+                        Vive la auténtica experiencia Raffaello en Villavicencio. Panadería
+                        europea de autor, café de especialidad y un ambiente cálido.
+                    </p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-12 animate-fade-up delay-300">
+                        <div>
+                            <h4 class="text-[0.65rem] uppercase tracking-widest text-gold font-medium mb-3">Horarios</h4>
+                            <p class="text-sm text-cream font-medium leading-relaxed">Lunes a Sábado<br><span class="text-mist font-light">8:00 am - 9:00 pm</span></p>
+                            <p class="text-sm text-cream font-medium leading-relaxed mt-2">Domingos y Festivos<br><span class="text-mist font-light">8:00 am - 8:00 pm</span></p>
+                        </div>
+                        <div>
+                            <h4 class="text-[0.65rem] uppercase tracking-widest text-gold font-medium mb-3">Ubicación</h4>
+                            <p class="text-sm text-cream font-medium leading-relaxed">Calle 15 # 40-20<br><span class="text-mist font-light">Barrio Buque<br>Villavicencio, Meta</span></p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-4 animate-fade-up delay-400">
+                        <a href="https://wa.me/573200000000" class="group relative px-8 py-3.5 bg-gold text-night text-xs font-medium rounded-full overflow-hidden flex items-center justify-center gap-3 transition-transform duration-300 hover:-translate-y-0.5 shadow-lg shadow-gold/20">
+                            <span class="relative z-10">Reservar Mesa</span>
+                            <iconify-icon icon="solar:calendar-linear" width="16" class="relative z-10 group-hover:scale-110 transition-transform duration-300"></iconify-icon>
+                            <div class="absolute inset-0 bg-golddark translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out z-0"></div>
+                        </a>
+                        <a href="https://www.instagram.com/raffaellobakery/?hl=es-la" target="_blank" rel="noopener" class="px-8 py-3.5 border border-[#4A3B32] text-cream text-xs font-medium rounded-full flex items-center justify-center hover:bg-espresso hover:border-taupe transition-all duration-300 hover:-translate-y-0.5">
+                            Ver Instagram
+                        </a>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7 relative group order-1 lg:order-2">
+                    <div class="relative w-full aspect-[4/5] lg:aspect-[3/4] rounded-[2rem] overflow-hidden shadow-premium animate-reveal delay-300">
+                        <img src="imgs/local-desdefuera.webp" alt="Fachada e interior de Raffaello Bakery" class="w-full h-full object-cover object-center scale-105 group-hover:scale-100 transition-transform duration-[4s] ease-out" loading="lazy" decoding="async">
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-700 pointer-events-none"></div>
+                        <div class="absolute inset-0 border border-white/10 rounded-[2rem] pointer-events-none mix-blend-overlay"></div>
+                    </div>
+
+                    <div class="absolute -bottom-6 -left-6 md:-bottom-10 md:-left-10 bg-white/10 backdrop-blur-md border border-white/10 p-6 md:p-8 rounded-[1.5rem] shadow-floating animate-float-slow delay-500 z-30 flex flex-col gap-3 max-w-[260px] overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent pointer-events-none"></div>
+                        <span class="relative z-10 text-[0.65rem] font-medium text-mist uppercase tracking-widest">Open Daily</span>
+                        <p class="relative z-10 font-serif text-cream text-xl md:text-2xl leading-tight">Specialty Coffee &amp;<br>Artisan Bakery</p>
+                        <div class="relative z-10 w-8 h-px bg-gold/60 mt-1"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="relative w-full px-6 lg:px-16 xl:px-24 pt-32 lg:pt-48 pb-12 bg-ink z-10 overflow-hidden border-t border-[#2A211C]">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full flex justify-center pointer-events-none select-none overflow-hidden opacity-[0.02] mix-blend-screen">
+            <span class="font-serif text-[12vw] leading-none text-stone2 whitespace-nowrap">Slow mornings. Warm coffee. Artisan moments.</span>
+        </div>
+
+        <div class="absolute bottom-0 right-0 w-[60%] h-[60%] bg-gold/5 blur-[150px] rounded-full pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="flex flex-col items-center text-center mb-24 lg:mb-32 animate-fade-up">
+                <h2 class="text-5xl md:text-7xl lg:text-8xl font-serif font-normal leading-none tracking-tight text-cream mb-6">Raffaello Bakery</h2>
+                <span class="text-[0.65rem] md:text-xs uppercase tracking-widest font-medium text-gold mb-6">Artisan Bakery &amp; Specialty Coffee</span>
+                <p class="text-sm md:text-base text-mist font-light italic max-w-md">"Donde la tradición europea y la calidez se encuentran."</p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-12 lg:gap-8 mb-24 lg:mb-32">
+                <div class="flex flex-col gap-5 animate-fade-up delay-100">
+                    <h4 class="text-[0.65rem] uppercase tracking-widest text-gold font-medium mb-1">Navegación</h4>
+                    <a href="#inicio" class="text-sm text-taupe hover:text-mist transition-colors duration-300 w-fit">Inicio</a>
+                    <a href="#menu" class="text-sm text-taupe hover:text-mist transition-colors duration-300 w-fit">Menú</a>
+                    <a href="#experiencia" class="text-sm text-taupe hover:text-mist transition-colors duration-300 w-fit">Experiencia</a>
+                    <a href="#historia" class="text-sm text-taupe hover:text-mist transition-colors duration-300 w-fit">Historia</a>
+                    <a href="#visitanos" class="text-sm text-taupe hover:text-mist transition-colors duration-300 w-fit">Reservas</a>
+                </div>
+
+                <div class="flex flex-col gap-5 animate-fade-up delay-200">
+                    <h4 class="text-[0.65rem] uppercase tracking-widest text-gold font-medium mb-1">Contacto</h4>
+                    <p class="text-sm text-taupe font-light leading-relaxed">Villavicencio, Meta<br>Calle 15 #40-20</p>
+                    <a href="tel:+573200000000" class="text-sm text-taupe hover:text-mist transition-colors duration-300 w-fit">+57 XXX XXX XXXX</a>
+                    <a href="mailto:hola@raffaellobakery.com" class="text-sm text-taupe hover:text-mist transition-colors duration-300 w-fit break-all">hola@raffaellobakery.com</a>
+                </div>
+
+                <div class="flex flex-col gap-5 animate-fade-up delay-300">
+                    <h4 class="text-[0.65rem] uppercase tracking-widest text-gold font-medium mb-1">Horarios</h4>
+                    <div class="text-sm text-taupe font-light leading-relaxed"><span class="text-mist">Lunes a Sábado</span><br>8:00 am - 9:00 pm</div>
+                    <div class="text-sm text-taupe font-light leading-relaxed"><span class="text-mist">Domingos y Festivos</span><br>8:00 am - 8:00 pm</div>
+                </div>
+
+                <div class="flex flex-col gap-5 animate-fade-up delay-400">
+                    <h4 class="text-[0.65rem] uppercase tracking-widest text-gold font-medium mb-1">Social</h4>
+                    <div class="flex flex-col gap-4">
+                        <a href="https://www.instagram.com/raffaellobakery/?hl=es-la" target="_blank" rel="noopener" class="group flex items-center gap-3 text-sm text-taupe hover:text-gold transition-colors duration-300 w-fit">
+                            <iconify-icon icon="mdi:instagram" width="16"></iconify-icon>
+                            <span class="group-hover:translate-x-1 transition-transform duration-300">Instagram</span>
+                        </a>
+                        <a href="#" class="group flex items-center gap-3 text-sm text-taupe hover:text-gold transition-colors duration-300 w-fit">
+                            <iconify-icon icon="ic:baseline-tiktok" width="16"></iconify-icon>
+                            <span class="group-hover:translate-x-1 transition-transform duration-300">TikTok</span>
+                        </a>
+                        <a href="https://wa.me/573200000000" class="group flex items-center gap-3 text-sm text-taupe hover:text-gold transition-colors duration-300 w-fit">
+                            <iconify-icon icon="mdi:whatsapp" width="16"></iconify-icon>
+                            <span class="group-hover:translate-x-1 transition-transform duration-300">WhatsApp</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-espresso flex flex-col md:flex-row justify-between items-center gap-6 animate-fade-up delay-500">
+                <p class="text-[0.65rem] text-taupe tracking-wider uppercase font-medium">© <span id="year">2026</span> Raffaello Bakery. Todos los derechos reservados.</p>
+                <div class="flex items-center gap-4">
+                    <div class="w-8 h-px bg-gold/30 hidden sm:block"></div>
+                    <p class="text-sm font-serif italic text-gold">Crafted with intention.</p>
+                    <div class="w-8 h-px bg-gold/30 hidden sm:block"></div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    
+
+    <script src="script.js"></script>
+</body>
+</html>
